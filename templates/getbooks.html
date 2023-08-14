@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>List of Books</h1>
+
+    <!-- Search form -->
+    <form method="GET" action="{{ url_for('get_books') }}">
+        <input type="text" class="form-control" name="search_query" placeholder="Search by Name or Author">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Ratings Count</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book['bookID'] }}</td>  <!-- Book ID -->
+                <td>{{ book['title'] }}</td>  <!-- Title -->
+                <td>{{ book['authors'] }}</td>  <!-- Author -->
+                <td>{{ book['ratings_count'] }}</td>  <!-- Ratings Count -->
+                <td>{{ book['quantity'] }}</td>  <!-- Quantity -->
+                <td><a href="{{ url_for('edit_book', bookID=book['bookID']) }}">Edit</a></td>
+                <td><a href="{{ url_for('delete_book', bookID=book['bookID']) }}">Delete</a></td>
+            
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

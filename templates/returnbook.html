@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Return Books</h2>
+    
+    <form method="POST" action="{{ url_for('return_books') }}">
+        <label for="search_query">Search by Member Name or ID:</label>
+        <input type="text" class="form-control" name="search_query" placeholder="Search for member">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    
+    {% if member and lent_books %}
+    <h3>Books Lent to {{ member['name'] }}</h3>
+    <ul>
+        {% for transaction in lent_books %}
+        <li>
+            {{ transaction['book_title'] }}
+            <form method="POST" action="{{ url_for('return_book', transactionID=transaction['transactionID']) }}">
+                <button type="submit" class="btn btn-primary">Return</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flash-messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+{% endblock %}

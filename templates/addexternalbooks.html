@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Add External Books</h2>
+    
+    <form method="POST" action="{{ url_for('add_external_books') }}">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" name="title"><br>
+        <label for="authors">Authors:</label>
+        <input type="text" class="form-control" name="authors"><br>
+        <label for="isbn">ISBN:</label>
+        <input type="text" class="form-control" name="isbn"><br>
+        <label for="publisher">Publisher:</label>
+        <input type="text" class="form-control" name="publisher"><br>
+        <label for="n">Number of Books:</label>
+        <input type="number" class="form-control" name="n" min="1"><br>
+        <button type="submit" class="btn btn-primary">Search and Add</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flash-messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+{% endblock %}

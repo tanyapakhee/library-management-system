@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>Members List</h1>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Member ID</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Debt</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{ member['memberID'] }}</td>
+                <td>{{ member['name'] }}</td>
+                <td>{{ member['contact'] }}</td>
+                <td>{{ member['debt'] }}</td>
+                <td><a href="{{ url_for('edit_member', memberID=member['memberID']) }}">Edit</a></td>
+                <td><a href="{{ url_for('delete_member', memberID=member['memberID']) }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
