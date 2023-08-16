@@ -25,10 +25,6 @@ def close_connection(exception):
 def index():
     return render_template('index.html')
 
-# @app.route('/add', methods =['GET','POST'])
-# def add():
-#     return render_template('add.html')
-
 @app.route('/get_books', methods=['GET'])
 def get_books():
     conn = get_db()
@@ -333,8 +329,6 @@ def add_external_books():
                     cur.execute('INSERT INTO books (bookID, title, authors, average_rating, isbn, isbn13, language_code, num_pages, ratings_count, text_reviews_count, publication_date, publisher, quantity) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                         (book['bookID'], book['title'], book['authors'], book['average_rating'], book['isbn'], book['isbn13'], book['language_code'], book['num_pages'], book['ratings_count'], book['text_reviews_count'], book['publication_date'], book['publisher'], 1))
                 except Exception as e:
-                    # print(e)
-                    # print(book)
                     print("exception occured",e)
         conn.commit()
         conn.close()
@@ -345,6 +339,15 @@ def add_external_books():
     
     return render_template('addexternalbooks.html')
 
+
+@app.route('/contact_library', methods=['GET'])
+def contact_library():
+    library_info = {
+        'address': '123 ABC Street, xyzville',
+        'contact_number': '123-456-7890',
+        'librarian_name': 'Mr. Librarian'
+    }
+    return render_template('contact_library.html', library_info=library_info)
 
 
 @app.route('/add_book', methods=['GET','POST'])

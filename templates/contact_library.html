@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+ {% block content %}
+  <h2>Contact Library</h2>
+
+    <p><strong>Address:</strong> {{ library_info.address }}</p>
+    <p><strong>Contact Number:</strong> {{ library_info.contact_number }}</p>
+    <p><strong>Librarian's Name:</strong> {{ library_info.librarian_name }}</p>
+ {% endblock %}

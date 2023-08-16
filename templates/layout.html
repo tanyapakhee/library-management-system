@@ -3,15 +3,33 @@
 <head>
     <title>Library Management System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #3c5362;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        nav {
+            justify-content: center;
+        }
+        .navbar-nav .nav-item {
+            margin: 0 10px;
+        }
+        main {
+            background-color: #83ac98;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <header>
-        <!-- <h1>Library Management System</h1> -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -41,15 +59,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('add_external_books') }}">Add Books via Frappe</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact_library') }}">Contact Us</a>
+                    </li>
                 </ul>
             </div>
         </nav>
-        
     </header>
 
-    <main class="p-4">
+    <main>
         {% block content %}{% endblock %}
     </main>
+    
+    <!-- Include scripts at the end of the body for better page loading -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
