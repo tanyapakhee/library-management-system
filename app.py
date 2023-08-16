@@ -372,6 +372,7 @@ def add_book():
     conn.commit()
 
     return redirect(url_for('index'))
+
 @app.route('/return_books', methods=['GET', 'POST'])
 def return_books():
     conn = get_db()
