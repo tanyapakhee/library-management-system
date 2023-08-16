@@ -363,11 +363,11 @@ def add_book():
     else:
         # Insert a new entry for the book with all fields
         cur.execute('INSERT INTO books (title, authors, average_rating, isbn, isbn13, language_code, num_pages, '
-                    'ratings_count, text_reviews_count, publication_date, publisher, quantity) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)',
+                    'ratings_count, text_reviews_count, publication_date, publisher, quantity) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                     (title, author, request.form.get('average_rating'), isbn, isbn13, request.form.get('language_code'),
                      request.form.get('num_pages'), request.form.get('ratings_count'),
                      request.form.get('text_reviews_count'), request.form.get('publication_date'),
-                     request.form.get('publisher')))
+                     request.form.get('publisher'),request.form.get('quantity')))
 
     conn.commit()
 
