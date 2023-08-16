@@ -340,15 +340,6 @@ def add_external_books():
     return render_template('addexternalbooks.html')
 
 
-@app.route('/contact_library', methods=['GET'])
-def contact_library():
-    library_info = {
-        'address': '123 ABC Street, xyzville',
-        'contact_number': '123-456-7890',
-        'librarian_name': 'Mr. Librarian'
-    }
-    return render_template('contact_library.html', library_info=library_info)
-
 
 @app.route('/add_book', methods=['GET','POST'])
 def add_book():
